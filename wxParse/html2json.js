@@ -13,6 +13,7 @@
  */
 
 var __placeImgeUrlHttps = "https";
+var __host ="http://127.0.0.1";
 var __emojisReg = '';
 var __emojisBaseSrc = '';
 var __emojis = {};
@@ -128,6 +129,7 @@ function html2json(html, bindName) {
                 node.imgIndex = results.images.length;
                 var imgUrl = node.attr.src;
                 imgUrl = wxDiscode.urlToHttpUrl(imgUrl, __placeImgeUrlHttps);
+                imgUrl = wxDiscode.urlAddHost(imgUrl, __host);
                 node.attr.src = imgUrl;
                 node.from = bindName;
                 results.images.push(node);
