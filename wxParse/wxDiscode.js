@@ -199,8 +199,25 @@ function urlToHttpUrl(url,rep){
     }
     return  url;
 }
+function urlAddHost(url,host){
+    let pat1=new RegExp("^http");
+    let result= pat1.test(url);
+    if(!result){
+        let pat2 = new RegExp("^/");
+        let result2 = pat2.test(url);
+        if(result2){
+            url = host+url;
+            
+        }else{
+            url =host+"/"+url;
+        }
+        
+    }
+    return url;
+}
 
 module.exports = {
     strDiscode:strDiscode,
-    urlToHttpUrl:urlToHttpUrl
+    urlToHttpUrl:urlToHttpUrl,
+    urlAddHost:urlAddHost
 }
